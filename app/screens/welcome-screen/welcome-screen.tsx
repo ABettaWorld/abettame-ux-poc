@@ -1,9 +1,9 @@
 import * as React from "react"
 import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from "react-native"
 import { NavigationInjectedProps } from "react-navigation"
-import { Button, Header, Screen, Text, Wallpaper } from "../../components"
+import { Button, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing } from "../../theme"
-const bowserLogo = require("./bowser.png")
+const abettaWorldLogo = require("./abettaworld_logo.png")
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -15,23 +15,6 @@ const TEXT: TextStyle = {
   fontFamily: "Montserrat",
 }
 const BOLD: TextStyle = { fontWeight: "bold" }
-const HEADER: TextStyle = {
-  paddingTop: spacing[3],
-  paddingBottom: spacing[4] + spacing[1],
-  paddingHorizontal: 0,
-}
-const HEADER_TITLE: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 12,
-  lineHeight: 15,
-  textAlign: "center",
-  letterSpacing: 1.5,
-}
-const TITLE_WRAPPER: TextStyle = {
-  ...TEXT,
-  textAlign: "center",
-}
 const TITLE: TextStyle = {
   ...TEXT,
   ...BOLD,
@@ -39,30 +22,25 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-const ALMOST: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 26,
-  fontStyle: "italic",
-}
-const BOWSER: ImageStyle = {
-  alignSelf: "center",
+const LOGO: ImageStyle = {
   marginVertical: spacing[5],
   maxWidth: "100%",
+  maxHeight: "60%",
 }
-const CONTENT: TextStyle = {
-  ...TEXT,
-  color: "#BAB6C8",
-  fontSize: 15,
-  lineHeight: 22,
-  marginBottom: spacing[5],
-}
-const CONTINUE: ViewStyle = {
+const BUTTON: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
-  backgroundColor: "#5D2555",
+  marginVertical: spacing[1],
 }
-const CONTINUE_TEXT: TextStyle = {
+const BUTTON_FACEBOOK: ViewStyle = {
+  ...BUTTON,
+  backgroundColor: "#3B5998",
+};
+const BUTTON_OTHER: ViewStyle = {
+  ...BUTTON,
+  backgroundColor: "#000000",
+};
+const BUTTON_TEXT: TextStyle = {
   ...TEXT,
   ...BOLD,
   fontSize: 13,
@@ -84,30 +62,20 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = props 
   return (
     <View style={FULL}>
       <Wallpaper />
-      <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
-        <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
-        <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} text="Your new app, " />
-          <Text style={ALMOST} text="almost" />
-          <Text style={TITLE} text="!" />
-        </Text>
-        <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
-        <Image source={bowserLogo} style={BOWSER} />
-        <Text style={CONTENT}>
-          This probably isn't what your app is going to look like. Unless your designer handed you
-          this screen and, in that case, congrats! You're ready to ship.
-        </Text>
-        <Text style={CONTENT}>
-          For everyone else, this is where you'll see a live preview of your fully functioning app
-          using Ignite.
-        </Text>
-      </Screen>
+      <Text style={TITLE} text="ABettaMe" />
+      <Image source={abettaWorldLogo} style={LOGO} />
       <SafeAreaView style={FOOTER}>
         <View style={FOOTER_CONTENT}>
           <Button
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            tx="welcomeScreen.continue"
+            style={BUTTON_FACEBOOK}
+            textStyle={BUTTON_TEXT}
+            tx="welcomeScreen.facebookLogin"
+            onPress={nextScreen}
+          />
+          <Button
+            style={BUTTON_OTHER}
+            textStyle={BUTTON_TEXT}
+            tx="welcomeScreen.otherOptions"
             onPress={nextScreen}
           />
         </View>
