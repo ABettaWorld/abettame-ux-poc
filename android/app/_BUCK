@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.abettamefe",
+    package = "com.abettameapp",
 )
 
 android_resource(
     name = "res",
-    package = "com.abettamefe",
+    package = "com.abettameapp",
     res = "src/main/res",
 )
 
